@@ -4,7 +4,10 @@ import { newAnecdote } from './reducers/anecdoteReducer'
 // import { setNotification } from './reducers/notificationReducer'
 
 const App = () => {
-  const anecdotes = useSelector(state => state)
+  const anecdotes = useSelector(state => {
+    // Order anecdotes by the number of votes descending order
+    return state.sort((a, b) => b.votes - a.votes)
+  })
   const dispatch = useDispatch()
 
   const submitAnecdote = (e) => {
